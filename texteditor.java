@@ -12,15 +12,15 @@ public class TextEditor {
         redoStack = new Stack<>();
     }
 
-    // Fungsi write: Menambahkan teks ke currentText, simpan state lama ke undoStack, clear redoStack
+    
     public void write(String text) {
-        undoStack.push(currentText.toString()); // Simpan state sebelum perubahan
+        undoStack.push(currentText.toString()); 
         currentText.append(text);
-        redoStack.clear(); // Clear redo karena ada perubahan baru
+        redoStack.clear(); 
         System.out.println("Teks ditambahkan: " + text);
     }
 
-    // Fungsi show: Menampilkan teks saat ini
+    
     public void show() {
         if (currentText.length() == 0) {
             System.out.println("Teks kosong.");
@@ -30,23 +30,22 @@ public class TextEditor {
         }
     }
 
-    // Fungsi undo: Kembali ke state sebelumnya
+    
     public void undo() {
         if (!undoStack.isEmpty()) {
-            redoStack.push(currentText.toString()); // Simpan current ke redo
-            currentText = new StringBuilder(undoStack.pop()); // Kembali ke state sebelumnya
+            redoStack.push(currentText.toString()); 
+            currentText = new StringBuilder(undoStack.pop()); 
             System.out.println("Undo berhasil.");
         } else {
             System.out.println("Tidak ada yang bisa di-undo.");
         }
     }
 
-    // Fungsi redo: Pulihkan ke state yang lebih baru
+   
     public void redo() {
         if (!redoStack.isEmpty()) {
-            undoStack.push(currentText.toString()); // Simpan current ke undo
-            currentText = new StringBuilder(redoStack.pop()); // Pulihkan ke state redo
-            System.out.println("Redo berhasil.");
+            undoStack.push(currentText.toString()); 
+            currentText = new StringBuilder(redoStack.pop()); 
         } else {
             System.out.println("Tidak ada yang bisa di-redo.");
         }
@@ -66,7 +65,7 @@ public class TextEditor {
             System.out.println("5. Keluar");
             System.out.print("Pilih opsi: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); // Konsumsi newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
